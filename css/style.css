@@ -1,0 +1,323 @@
+/* 設定：2021年5月の開業時に、月額制のホームページ作成サービスのひな形で代表本人が作ったサイト。
+   2026年秋に本人が文章を全面的に書き直した。
+   layout：見出し帯＋臙脂のメニュー帯。左揃え。ページごとに組み方を変える。 */
+:root{
+  color-scheme: light;
+  --base:#f4f3f0;
+  --photo:#fbfbfb;
+  --paper:#ffffff;
+  --sumi:#2f2c2c;
+  --nezu:#625d5d;
+  --kei:#d9d4cf;
+  --enji:#9f2f3d;
+  --enji-koi:#7d2430;
+  --enji-usu:#f6eaea;
+  --gothic:"游ゴシック体","Yu Gothic",YuGothic,"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",sans-serif;
+  --mincho:"游明朝体","Yu Mincho",YuMincho,"Hiragino Mincho ProN","HG明朝E","MS P明朝",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--base);color:var(--sumi);font-family:var(--gothic);font-weight:500;font-size:16px;line-height:1.9}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--enji)}
+a:hover{text-decoration:none}
+h1,h2,h3,h4,p,figure,dl,dd,ul,ol{margin:0}
+ul,ol{padding:0}
+h1,h2,h3,h4{line-height:1.5;text-wrap:balance}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+:focus-visible{outline:2px solid var(--enji);outline-offset:2px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:50}
+
+/* 見出し帯 */
+.head{background:var(--paper)}
+.head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:14px}
+.logo{text-decoration:none;color:var(--sumi);display:block;line-height:1.4}
+.logo small{display:block;font-size:11px;color:var(--nezu)}
+.logo b{font-family:var(--mincho);font-size:25px;letter-spacing:.14em;font-weight:600}
+.head-info{display:flex;align-items:center;gap:18px;font-size:12px;color:var(--nezu);line-height:1.6;text-align:right}
+.head-info a{display:inline-block;background:var(--paper);border:1px solid var(--enji);color:var(--enji);font-weight:700;font-size:14px;text-decoration:none;padding:9px 18px;white-space:nowrap}
+.head-info a:hover{background:var(--enji);color:#fff}
+.menu-btn{display:none;white-space:nowrap;flex:none;font:inherit;font-size:13px;font-weight:700;background:var(--paper);color:var(--sumi);border:1px solid var(--sumi);border-radius:3px;padding:8px 14px;min-height:44px;cursor:pointer}
+.gnav{background:var(--enji)}
+.gnav ul{display:flex;list-style:none;margin:0 auto;padding:0 24px;max-width:1040px}
+.gnav li{flex:1 1 auto}
+.gnav a{display:block;text-align:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 6px;border-left:1px solid rgba(255,255,255,.25);white-space:nowrap}
+.gnav li:last-child a{border-right:1px solid rgba(255,255,255,.25)}
+.gnav a:hover{background:var(--enji-koi)}
+.gnav a[aria-current="page"]{background:var(--paper);color:var(--enji)}
+
+
+/* 共通の部品 */
+.h2{font-family:var(--mincho);font-size:23px;font-weight:600;letter-spacing:.08em;padding-bottom:9px;margin-bottom:20px;border-bottom:1px solid var(--kei);position:relative}
+.h2::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;background:var(--enji)}
+.h3{font-size:17px;font-weight:700;margin:28px 0 8px;padding-left:10px;border-left:4px solid var(--enji);line-height:1.5}
+.blk + .blk{margin-top:54px}
+p + p{margin-top:.9em}
+.more{display:inline-block;margin-top:12px;font-weight:700;font-size:14px}
+.more::before{content:"";display:inline-block;width:7px;height:7px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);margin-right:8px;vertical-align:2px}
+.small{font-size:13px;color:var(--nezu);line-height:1.8}
+.li{padding-left:1.3em}
+.li li{margin-bottom:.35em}
+.kome{list-style:none;font-size:13px;color:var(--nezu);margin-top:10px;line-height:1.8}
+.kome li{padding-left:1.2em;text-indent:-1.2em}
+.waku{background:var(--paper);border:1px solid var(--kei);padding:18px 22px}
+.keikoku{border-top:1px solid var(--kei);border-bottom:1px solid var(--kei);padding:14px 2px 15px}
+.keikoku h3,.keikoku h4{font-size:15.500px;font-weight:700;color:var(--enji);margin-bottom:4px;padding-left:1.3em;text-indent:-1.3em}
+.keikoku h3::before,.keikoku h4::before{content:"※";display:inline-block;width:1.3em;text-indent:0}
+.keikoku p{padding-left:1.3em;font-size:15px}
+.keikoku .li{list-style:none;padding-left:1.3em;font-size:15px}
+.keikoku .li li{padding-left:1em;text-indent:-1em}
+.keikoku .li li::before{content:"・"}
+.tbl-box{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-size:15px;line-height:1.75}
+th,td{border:1px solid var(--kei);padding:11px 14px;text-align:left;vertical-align:top}
+th{background:#ebe8e4;font-weight:700}
+thead th{background:var(--sumi);color:#fff;border-color:var(--sumi);font-size:14px;white-space:nowrap}
+tbody th{white-space:nowrap}
+td.yen{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+td.c{text-align:center;white-space:nowrap}
+
+/* 下層ページの題 */
+.ptitle{background:var(--photo);border-bottom:1px solid var(--kei);padding:30px 0 26px}
+.ptitle h1{font-family:var(--mincho);font-size:29px;font-weight:600;letter-spacing:.12em}
+.pan{font-size:13px;color:var(--nezu);margin-bottom:4px}
+.pan a{color:var(--nezu)}
+.ptitle .lead{margin-top:10px;max-width:44em;font-size:15px}
+.page{padding-top:42px;padding-bottom:72px}
+.narrow{max-width:820px}
+.jump{display:flex;flex-wrap:wrap;gap:6px 8px;list-style:none;margin-bottom:38px}
+.jump button{font:inherit;font-size:14px;font-weight:700;background:var(--paper);border:1px solid var(--kei);color:var(--sumi);padding:6px 14px;min-height:40px;cursor:pointer}
+.jump button:hover{border-color:var(--enji);color:var(--enji)}
+
+/* トップ */
+.intro{background:var(--photo);border-bottom:1px solid var(--kei);padding:44px 0 46px}
+.intro h1{font-family:var(--mincho);font-size:30px;font-weight:600;letter-spacing:.08em;line-height:1.6}
+.intro .say{margin-top:14px;max-width:41em}
+.dekiru{display:grid;grid-template-columns:1.25fr 1fr;gap:0;margin-top:30px;border:1px solid var(--kei);background:var(--paper)}
+.dekiru > div{padding:20px 24px 22px}
+.dekiru > div + div{border-left:1px solid var(--kei);background:#f9f7f5}
+.dekiru h2{font-size:15px;font-weight:700;margin-bottom:10px}
+.dekiru h2 span{font-family:var(--mincho);font-size:19px;color:var(--enji);margin-right:4px}
+.dekiru ul{list-style:none}
+.dekiru li{padding:7px 0;border-top:1px dotted var(--kei);font-size:15px;line-height:1.7}
+.dekiru li small{display:block;font-size:13px;color:var(--nezu)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:44px;padding-top:46px;padding-bottom:72px;align-items:start}
+.aisatsu{display:grid;grid-template-columns:112px 1fr;gap:22px;align-items:start}
+.aisatsu img{border:1px solid var(--kei);background:var(--photo)}
+.aisatsu figcaption{font-size:12px;color:var(--nezu);margin-top:4px;line-height:1.5}
+.hajimete{list-style:none;counter-reset:h;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--kei);background:var(--paper)}
+.hajimete li{counter-increment:h;padding:16px 18px 18px;font-size:14px;line-height:1.75}
+.hajimete li + li{border-left:1px solid var(--kei)}
+.hajimete b{display:block;font-size:16px;margin-bottom:2px}
+.hajimete b::before{content:counter(h) "．";color:var(--enji);font-family:var(--mincho);font-size:19px}
+.side{display:flex;flex-direction:column;gap:22px;font-size:14px;line-height:1.8}
+.box{background:var(--paper);border:1px solid var(--kei)}
+.box h2{font-size:14px;font-weight:700;background:var(--sumi);color:#fff;padding:7px 14px;letter-spacing:.08em}
+.box .in{padding:13px 14px}
+.news{list-style:none}
+.news li{padding:10px 14px;border-bottom:1px dotted var(--kei)}
+.news li:last-child{border-bottom:0}
+.news time{display:block;font-size:12px;color:var(--nezu);font-variant-numeric:tabular-nums}
+.box .foot{border-top:1px solid var(--kei);padding:8px 14px;font-size:13px;font-weight:700}
+.kensu{width:100%;font-size:14px}
+.kensu th,.kensu td{border:0;border-bottom:1px dotted var(--kei);padding:6px 0;background:none}
+.kensu td{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kensu tr:last-child th,.kensu tr:last-child td{border-bottom:0}
+
+/* 事例の一覧 */
+.jirei{width:100%}
+.jirei td,.jirei th{font-size:15px}
+.jirei .when{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--nezu);font-size:14px}
+.jirei .kind{white-space:nowrap;font-weight:700;color:var(--enji);font-size:14px}
+.jirei a{font-weight:700}
+.jirei .res{font-size:14px}
+
+/* 調査内容 */
+.svc{border-top:1px solid var(--kei);padding:30px 0 34px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px 36px;align-items:start}
+.svc:first-of-type{border-top:0;padding-top:0}
+.svc h2{font-family:var(--mincho);font-size:22px;font-weight:600;letter-spacing:.06em;grid-column:1 / -1}
+.svc h2 small{font-family:var(--gothic);font-size:13px;color:var(--nezu);font-weight:500;margin-left:12px;letter-spacing:0}
+.svc .meyasu{background:var(--paper);border:1px solid var(--kei);font-size:14px;line-height:1.75}
+.svc .meyasu div{padding:10px 14px;border-bottom:1px dotted var(--kei)}
+.svc .meyasu div:last-child{border-bottom:0}
+.svc .meyasu dt{font-weight:700;color:var(--enji);font-size:13px}
+
+/* 料金・流れ */
+.nagare{list-style:none;counter-reset:n}
+.nagare > li{counter-increment:n;display:grid;grid-template-columns:40px 1fr;gap:16px;padding:0 0 22px;position:relative}
+.nagare > li::before{content:counter(n);width:40px;height:40px;border-radius:50%;background:var(--enji);color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.nagare > li::after{content:"";position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--kei)}
+.nagare > li:last-child::after{display:none}
+.nagare h3{font-size:17px;padding-top:4px}
+.nagare p,.nagare ul{font-size:15px}
+
+/* 代表あいさつ */
+.greet{display:grid;grid-template-columns:250px minmax(0,1fr);gap:44px;align-items:start}
+.greet figure{background:var(--photo);border:1px solid var(--kei)}
+.greet figcaption{font-size:13px;padding:8px 12px;border-top:1px solid var(--kei);background:var(--paper);line-height:1.6}
+.greet .lead{font-family:var(--mincho);font-size:23px;font-weight:600;line-height:1.8;letter-spacing:.06em;margin-bottom:1.2em}
+.greet .txt p + p{margin-top:1.25em}
+.greet .hitokoto{border-left:3px solid var(--enji);padding:2px 0 2px 16px;margin:1.6em 0;font-family:var(--mincho);font-size:18px}
+.sign{text-align:right;margin-top:1.8em}
+.sign b{font-family:var(--mincho);font-size:22px;letter-spacing:.3em;font-weight:600}
+.keireki{margin-top:18px;font-size:14px}
+.keireki th{width:5.5em}
+
+/* 事例の本文 */
+.case{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:44px;align-items:start}
+.kiroku section + section{margin-top:28px}
+.kiroku h2{font-size:16px;font-weight:700;color:var(--enji);margin-bottom:4px}
+.kiroku p + p{margin-top:.7em}
+.kiroku .shokan{background:var(--paper);border:1px solid var(--kei);padding:18px 22px}
+.kiroku .shokan p{font-family:var(--mincho);font-size:16.500px;line-height:2}
+.case aside{font-size:14px;line-height:1.75}
+.case aside table{font-size:14px}
+.case aside th{width:5.2em;white-space:normal}
+.case aside .kanren{margin-top:16px;background:var(--paper);border:1px solid var(--kei);padding:12px 14px}
+.case aside .kanren b{display:block;font-size:13px;color:var(--nezu)}
+.back{display:inline-block;margin-top:34px;font-weight:700;font-size:14px}
+
+/* よくあるご質問 */
+.faq{border-bottom:1px solid var(--kei);margin-bottom:8px}
+.faq dt{font-weight:700;padding:15px 0 4px 2.2em;text-indent:-2.2em;border-top:1px solid var(--kei)}
+.faq dt::before{content:"Q．";color:var(--enji);font-family:var(--mincho);font-size:19px}
+.faq dd{padding:0 0 15px 2.2em;font-size:15.500px}
+
+/* 事務所概要 */
+.gaiyo th{width:9em;white-space:normal}
+.zu{background:var(--paper);border:1px solid var(--kei);padding:10px}
+.shashin{background:var(--paper);border:1px solid var(--kei);padding:8px}
+.shashin figcaption{font-size:13px;color:var(--nezu);padding:8px 4px 2px;line-height:1.7}
+.shashin2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.dogu img{width:100%;max-height:380px;object-fit:cover}
+.intro-img{margin-bottom:28px}
+.intro-img img{width:100%;aspect-ratio:1400/480;object-fit:cover;object-position:50% 78%;border:1px solid var(--kei)}
+.hs{position:relative;display:block}
+.hs-b{position:absolute;background:none;border:0;padding:0;margin:0;cursor:default;outline:none;-webkit-tap-highlight-color:transparent}
+.hs-haizara{left:53%;top:12%;width:20%;height:38%}
+.hs-tabako{left:41%;top:12%;width:24%;height:35%}
+.hs-hyosatsu{left:62%;top:42%;width:15%;height:18%}
+@media (max-width:760px){.intro-img img{aspect-ratio:auto}.hs-haizara{top:38%;height:24%}}
+body.ura-on{background:#000}
+body.ura-on > *:not(#ura){display:none !important}
+#ura{display:none;background:#000;color:#e9e6e3;font-family:var(--mincho);font-weight:500;min-height:100vh;padding:72px 24px 56px;line-height:2}
+body.ura-on #ura{display:block;animation:ura-in .7s ease-out}
+@keyframes ura-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){body.ura-on #ura{animation:none}}
+#ura .in{max-width:520px;margin:0 auto}
+#ura h1{font-size:15px;font-weight:500;letter-spacing:.2em}
+#ura .to{font-size:22px;margin:40px 0 56px;letter-spacing:.1em}
+#ura h2{font-size:15px;font-weight:500;letter-spacing:.2em;border-bottom:1px solid #e9e6e3;padding-bottom:6px;margin:48px 0 16px}
+#ura p{font-size:16px}
+#ura dl{display:grid;grid-template-columns:7em 1fr;font-size:16px}
+#ura dd{margin:0}
+#ura ul{list-style:none;margin-top:14px;font-size:14px}
+#ura li{padding-left:1.3em;text-indent:-1.3em}
+#ura label{display:block;font-size:14px;margin-top:16px}
+#ura input,#ura textarea{display:block;width:100%;font:inherit;font-size:16px;color:#e9e6e3;background:#000;border:1px solid #e9e6e3;border-radius:0;padding:8px 10px;margin-top:4px}
+#ura textarea{min-height:120px}
+#ura button{font:inherit;font-size:15px;letter-spacing:.3em;color:#e9e6e3;background:#000;border:1px solid #e9e6e3;padding:10px 36px;min-height:46px;margin-top:22px;cursor:pointer}
+#ura button:hover{background:#e9e6e3;color:#000}
+#ura :focus-visible{outline:1px solid #e9e6e3;outline-offset:3px}
+#ura .msg{margin-top:20px;font-size:14px}
+#ura .fic{margin-top:72px;font-size:12px}
+.case-img{margin-bottom:30px}
+.case-img img{width:100%;max-height:420px;object-fit:cover}
+@media (max-width:760px){.shashin2{grid-template-columns:1fr}}
+.zu svg{display:block;width:100%;height:auto}
+.docs{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.hyoshiki{background:#fff;color:#000;border:2px solid #000;padding:16px 16px 14px}
+.hyoshiki h3{text-align:center;font-size:18px;letter-spacing:.5em;padding-left:.5em;margin-bottom:10px}
+.hyoshiki table{font-size:13px}
+.hyoshiki th,.hyoshiki td{border:1px solid #000;padding:7px 10px;background:#fff;line-height:1.6;white-space:normal}
+.hyoshiki th{width:47%;font-weight:500}
+.cert{background:#fdfcf8;border:1px solid var(--sumi);outline:1px solid var(--sumi);outline-offset:-7px;padding:34px 30px 26px;text-align:center;font-family:var(--mincho)}
+.cert .org{font-size:12px;letter-spacing:.4em}
+.cert h3{font-size:28px;font-weight:600;letter-spacing:.6em;padding-left:.6em;margin:6px 0 2px}
+.cert .no{font-size:12px;color:var(--nezu)}
+.cert .to{font-size:20px;letter-spacing:.3em;margin:16px 0 12px;border-bottom:1px solid var(--sumi);display:inline-block;padding:0 14px 3px}
+.cert .body{font-size:14px;line-height:2.1;text-align:left;max-width:25em;margin:0 auto}
+.cert .foot{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:16px;font-size:14px}
+.seal{width:54px;height:54px;flex:none}
+.cap{font-size:12px;color:var(--nezu);margin-top:8px;line-height:1.7}
+
+/* ご相談フォーム */
+.form{background:var(--paper);border:1px solid var(--kei);padding:26px 28px 30px}
+.fld{padding:16px 0;border-top:1px dotted var(--kei)}
+.fld:first-of-type{border-top:0;padding-top:0}
+.fld > label,.fld > .lbl{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+.hissu{display:inline-block;background:var(--enji);color:#fff;font-size:11px;font-weight:700;padding:0 6px;margin-left:8px;line-height:1.7;vertical-align:1px}
+.nini{display:inline-block;background:#8b8686;color:#fff;font-size:11px;font-weight:700;padding:0 6px;margin-left:8px;line-height:1.7;vertical-align:1px}
+.form input[type=text],.form input[type=tel],.form input[type=email],.form select,.form textarea{width:100%;max-width:520px;font:inherit;border:1px solid #a9a39f;background:#fff;color:var(--sumi);padding:9px 10px;border-radius:0}
+.form textarea{max-width:none;min-height:150px}
+.form .opts{display:flex;flex-wrap:wrap;gap:6px 22px}
+.form .opts label{display:flex;align-items:center;gap:7px;font-weight:500;min-height:36px}
+.form .hint{font-size:13px;color:var(--nezu);margin-top:6px;line-height:1.7}
+.form .err{color:var(--enji);font-weight:700;font-size:14px;margin-top:6px}
+.form [aria-invalid="true"]{border-color:var(--enji);background:#fdf4f4}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{font:inherit;font-weight:700;font-size:15px;background:var(--enji);color:#fff;border:1px solid var(--enji);padding:11px 34px;min-height:48px;cursor:pointer}
+.btn:hover{background:var(--enji-koi)}
+.btn.sub{background:var(--paper);color:var(--sumi);border-color:#a9a39f}
+.btn.sub:hover{background:#ebe8e4}
+.errsum{background:var(--enji-usu);border:1px solid var(--enji);padding:12px 16px;margin-bottom:18px;font-size:14px;font-weight:700;color:var(--enji-koi)}
+.kakunin th{width:11em;white-space:normal}
+.kakunin td{white-space:pre-wrap;word-break:break-word}
+.demo{background:#fff8e6;border:1px solid #c9a23c;padding:16px 20px;line-height:1.8}
+.demo b{display:block;font-size:17px;margin-bottom:4px}
+
+/* 足元 */
+.site-foot{background:var(--sumi);color:#e9e6e3;font-size:13px;padding:30px 0 26px;line-height:1.8}
+.site-foot .wrap{display:grid;grid-template-columns:1fr auto;gap:18px 40px}
+.site-foot a{color:#e9e6e3}
+.site-foot ul{list-style:none;display:grid;grid-template-columns:repeat(2,auto);gap:2px 26px}
+.site-foot .copy{grid-column:1 / -1;border-top:1px solid #56504f;padding-top:14px;color:#cfc9c6;font-size:12px}
+.site-foot .fic{display:block;margin-top:6px}
+
+@media (max-width:1024px){
+  .gnav a{font-size:13px;padding:12px 4px}
+  .cols{grid-template-columns:minmax(0,1fr) 240px;gap:30px}
+  .svc{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr;gap:30px}
+  .greet{grid-template-columns:210px minmax(0,1fr);gap:30px}
+  .docs{grid-template-columns:1fr;max-width:500px}
+  .head-info span{display:none}
+}
+@media (max-width:760px){
+  body{font-size:15px}
+  .wrap{padding:0 16px}
+  .logo b{font-size:19px}
+  .head-info{display:none}
+  .menu-btn{display:block}
+  .gnav ul{display:none;flex-direction:column;padding:0}
+  .gnav ul.is-open{display:flex}
+  .gnav a{text-align:left;padding:13px 16px;border-left:0;border-bottom:1px solid rgba(255,255,255,.25);font-size:15px}
+  .gnav li:last-child a{border-right:0}
+  .intro{padding:30px 0 32px}
+  .intro h1{font-size:22px}
+  .dekiru{grid-template-columns:1fr}
+  .dekiru > div + div{border-left:0;border-top:1px solid var(--kei)}
+  .cols{grid-template-columns:1fr;padding-top:34px;padding-bottom:48px}
+  .blk + .blk{margin-top:42px}
+  .h2{font-size:20px}
+  .hajimete{grid-template-columns:1fr}
+  .hajimete li + li{border-left:0;border-top:1px solid var(--kei)}
+  .aisatsu{grid-template-columns:84px 1fr;gap:16px}
+  .ptitle h1{font-size:23px}
+  .page{padding-top:30px;padding-bottom:48px}
+  .greet{grid-template-columns:1fr}
+  .greet figure{max-width:220px}
+  .greet .lead{font-size:19px}
+  .jirei thead{display:none}
+  .jirei tr{display:block;border-bottom:1px solid var(--kei);padding:10px 0;background:var(--paper)}
+  .jirei td{display:block;border:0;padding:1px 12px}
+  .jirei .when,.jirei .kind{display:inline-block;padding-right:0}
+  .gaiyo th{width:6.2em}
+  .kakunin th{width:6.5em}
+  .form{padding:18px 16px 22px}
+  .cert{padding:28px 18px 22px}
+  .site-foot .wrap{grid-template-columns:1fr}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

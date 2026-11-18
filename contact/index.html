@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="京都市東山区の個人探偵事務所。ペットの捜索、人探し、聞き込みと固定点の張り込みによる調査、付きまといの記録、原因のわからないご相談をお受けしています。">
+<title>ご相談フォーム｜白鷺私立探偵事務所</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+
+<header class="head">
+  <div class="wrap">
+    <a class="logo" href="../index.html"><small>京都市東山区　ペットの捜索・人探し・聞き込みによる調査</small><b>白鷺私立探偵事務所</b></a>
+    <p class="head-info"><span>面談は予約制です（火・木の午後、土の午前）<br>ご相談・お見積りは無料</span><a href="../contact/index.html">ご相談フォーム</a></p>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="gnav-list">メニュー</button>
+  </div>
+</header>
+<nav class="gnav" aria-label="サイト内メニュー">
+  <ul id="gnav-list">
+    <li><a href="../index.html">トップ</a></li>
+    <li><a href="../service/index.html">調査内容</a></li>
+    <li><a href="../price/index.html">料金とご依頼の流れ</a></li>
+    <li><a href="../cases/index.html">調査事例</a></li>
+    <li><a href="../greeting/index.html">代表あいさつ</a></li>
+    <li><a href="../faq/index.html">よくあるご質問</a></li>
+    <li><a href="../office/index.html">事務所概要</a></li>
+    <li><a href="../contact/index.html" aria-current="page">ご相談フォーム</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+<div>
+  <div class="ptitle"><div class="wrap"><p class="pan"><a href="../index.html">トップ</a> ＞ ご相談フォーム</p><h1>ご相談フォーム</h1>
+    <p class="lead">翌営業日の夜までに折り返します。「急いでいる」を選ばれた場合は、月〜土の8時〜21時に届いたものは当日中にご連絡します。</p></div></div>
+  <div class="wrap page narrow">
+    <div class="keikoku" style="margin-bottom:24px">
+      <h3>身の危険があるときは、先に110番を</h3>
+      <p>相手が近くにいる、待ち伏せされている、という場合は、このフォームではなく警察へ連絡してください。お子さんや認知症のある方の行方がわからないときも、先に警察署へ行方不明者届をお願いします。</p>
+    </div>
+
+    <div id="form-input">
+      <form class="form" id="soudan" novalidate>
+        <div id="errsum" class="errsum" role="alert" hidden></div>
+
+        <div class="fld">
+          <label for="f-kind">ご相談の種類<span class="hissu">必須</span></label>
+          <select id="f-kind" name="kind" required>
+            <option value="">選んでください</option>
+            <option>ペットの捜索</option>
+            <option>人探し</option>
+            <option>聞き込み・固定点の張り込み</option>
+            <option>付きまといの記録と同行</option>
+            <option>原因のわからないご相談</option>
+            <option>古い品・家の来歴調べ</option>
+            <option>どれに当たるかわからない</option>
+          </select>
+          <p class="err" id="e-kind" hidden></p>
+        </div>
+
+        <div class="fld">
+          <span class="lbl">お急ぎですか<span class="nini">任意</span></span>
+          <div class="opts">
+            <label><input type="checkbox" id="f-isogi" name="isogi"> 急いでいる（いなくなって三日以内のペット、付きまとい、警察に届けたあとの行方不明）</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label for="f-name">お名前<span class="hissu">必須</span></label>
+          <input type="text" id="f-name" name="name" autocomplete="name" required>
+          <p class="hint">仮のお名前で構いません。</p>
+          <p class="err" id="e-name" hidden></p>
+        </div>
+
+        <div class="fld">
+          <span class="lbl" id="l-how">ご連絡の方法<span class="hissu">必須</span></span>
+          <div class="opts" role="radiogroup" aria-labelledby="l-how">
+            <label><input type="radio" name="how" value="電話" id="f-how-tel"> 電話</label>
+            <label><input type="radio" name="how" value="メール" id="f-how-mail"> メール</label>
+          </div>
+          <p class="err" id="e-how" hidden></p>
+        </div>
+
+        <div class="fld" id="w-tel">
+          <label for="f-tel">電話番号<span class="hissu" id="h-tel">必須</span></label>
+          <input type="tel" id="f-tel" name="tel" autocomplete="tel" inputmode="tel">
+          <p class="hint">留守番電話に、事務所の名前を残してよいかどうかも、下の相談内容に書いてください。書かれていない場合、名前は残しません。</p>
+          <p class="err" id="e-tel" hidden></p>
+        </div>
+
+        <div class="fld" id="w-mail">
+          <label for="f-mail">メールアドレス<span class="hissu" id="h-mail">必須</span></label>
+          <input type="email" id="f-mail" name="mail" autocomplete="email">
+          <p class="err" id="e-mail" hidden></p>
+        </div>
+
+        <div class="fld">
+          <span class="lbl">ご連絡してよい時間帯<span class="nini">任意</span></span>
+          <div class="opts">
+            <label><input type="checkbox" name="time" value="午前（8〜12時）"> 午前（8〜12時）</label>
+            <label><input type="checkbox" name="time" value="午後（12〜18時）"> 午後（12〜18時）</label>
+            <label><input type="checkbox" name="time" value="夜（18〜21時）"> 夜（18〜21時）</label>
+          </div>
+          <p class="hint">ご家族に知られたくない時間帯があれば、相談内容に書いてください。</p>
+        </div>
+
+        <div class="fld">
+          <label for="f-body">ご相談の内容<span class="hissu">必須</span></label>
+          <textarea id="f-body" name="body" required aria-describedby="h-body"></textarea>
+          <p class="hint" id="h-body">数行で足ります。例：「三日前の夕方から、十五歳の猫が戻りません。東山区です。」「半年前に別れた人が、週に何度か帰り道に立っています。警察には先月相談しました。」探す相手・調べる相手のお名前やご住所は、ここには書かないでください。面談で伺います。</p>
+          <p class="err" id="e-body" hidden></p>
+        </div>
+
+        <div class="fld">
+          <div class="opts">
+            <label><input type="checkbox" id="f-agree" name="agree" required> <span><a href="../privacy/index.html">個人情報の取り扱い</a>を読み、同意します<span class="hissu">必須</span></span></label>
+          </div>
+          <p class="err" id="e-agree" hidden></p>
+        </div>
+
+        <p class="small" style="margin-top:8px">※ このサイトはTRPG用の架空の事務所のものです。このフォームに入力した内容は、実際にはどこにも送信されず、保存もされません。</p>
+        <div class="btns"><button type="submit" class="btn">入力内容を確認する</button></div>
+      </form>
+    </div>
+
+    <div id="form-confirm" hidden>
+      <h2 class="h2" id="confirm-h" tabindex="-1">入力内容の確認</h2>
+      <div class="tbl-box"><table class="kakunin"><tbody id="confirm-body"></tbody></table></div>
+      <div class="btns">
+        <button type="button" class="btn sub" id="btn-back">入力に戻る</button>
+        <button type="button" class="btn" id="btn-send">この内容で送る</button>
+      </div>
+    </div>
+
+    <div id="form-done" hidden>
+      <div class="demo" id="done-h" tabindex="-1" role="status">
+        <b>送信は行われていません。</b>
+        このサイトはTRPG用に作った架空の探偵事務所のホームページで、ご相談を受け付ける先がありません。入力された内容は、どこにも送信されず、保存もされていません。ページを閉じると消えます。
+      </div>
+      <div class="btns"><button type="button" class="btn sub" id="btn-reset">フォームを最初の状態に戻す</button></div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><b style="font-family:var(--mincho);font-size:17px;letter-spacing:.12em;font-weight:600">白鷺私立探偵事務所</b><br>京都市東山区　／　面談は予約制（火・木 13:00〜18:00、土 10:00〜13:00）<br>京都府公安委員会 探偵業届出</div>
+    <ul>
+      <li><a href="../service/index.html">調査内容</a></li>
+      <li><a href="../price/index.html">料金とご依頼の流れ</a></li>
+      <li><a href="../cases/index.html">調査事例</a></li>
+      <li><a href="../greeting/index.html">代表あいさつ</a></li>
+      <li><a href="../faq/index.html">よくあるご質問</a></li>
+      <li><a href="../office/index.html">事務所概要・アクセス</a></li>
+      <li><a href="../news/index.html">お知らせ</a></li>
+      <li><a href="../privacy/index.html">個人情報の取り扱い</a></li>
+      <li><a href="../contact/index.html">ご相談フォーム</a></li>
+    </ul>
+    <p class="copy">© 2021–2026 白鷺私立探偵事務所
+      <span class="fic">このサイトはTRPG用に作った架空の探偵事務所のものです。実在の人物・団体・事業者とは関係がありません。探偵業の届出、日本オカルト協会、掲載している件数や事例はすべて創作で、依頼の受付は行っていません。</span></p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
