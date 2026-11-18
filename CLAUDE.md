@@ -34,7 +34,8 @@ TRPGキャラクター「白鷺 雅」の探偵事務所の架空ホームペー
    （Issue と PR は番号を共有しているため、この API で最新の番号がわかる。結果が空なら 1）
 2. **ブランチを切る**。`git fetch` して最新の `develop` から、`<種類>/SHIRASAGI-TANTEI-<番号>` を切る。
 3. **コミット**。メッセージは `<種類>: <変更内容>`。
-4. **PR を出す**（`gh pr create --base develop`）。タイトルは `[SHIRASAGI-TANTEI-<番号>] <種類>: <何を実装したか>`。本文は `.github/pull_request_template.md` の形。PRに付いた番号がブランチ名とずれたら、ブランチ名を PR 番号に合わせて付け直す（`gh api -X POST repos/{owner}/{repo}/branches/<旧ブランチ名>/rename -f new_name=<新ブランチ名>`）。
+4. **PR を出す**。push の直前にもう一度 1. のコマンドで番号を確かめ、ずれていたらローカルのブランチ名を `git branch -m` で直してから push し、`gh pr create --base develop` する。タイトルは `[SHIRASAGI-TANTEI-<番号>] <種類>: <何を実装したか>`。本文は `.github/pull_request_template.md` の形。
+   - **PRを出したあとはブランチ名を変えない。** 元ブランチの名前を変えると GitHub がそのPRを閉じてしまう。万一ずれたら、そのままにしておく。
 5. マージはユーザーが行う。Claude はマージしない。
 6. **リリース**：ユーザーに頼まれたときだけ、`develop` → `main` のPRを出す。タイトルは `release: <日付> <含まれる変更の要約>`、本文には含まれるPRを `#番号` で列挙する。
 
@@ -48,7 +49,7 @@ TRPGキャラクター「白鷺 雅」の探偵事務所の架空ホームペー
 | `feature` | ページ・機能・隠し要素の追加 | `feature/SHIRASAGI-TANTEI-3` | `[SHIRASAGI-TANTEI-3] feature: 調査事例「〇〇」のページを追加し、一覧とトップに掲載` |
 | `fix` | 表示崩れ・リンク切れ・誤字などの修正 | `fix/SHIRASAGI-TANTEI-5` | `[SHIRASAGI-TANTEI-5] fix: スマホ幅でメニューを開いたあと閉じられない不具合を修正` |
 | `content` | 既存ページの文章の書き直し・お知らせ更新 | `content/SHIRASAGI-TANTEI-7` | `[SHIRASAGI-TANTEI-7] content: 11月のお知らせを2件追加` |
-| `chore` | 構成の整理・設定ファイル・このファイルの更新 | `chore/SHIRASAGI-TANTEI-2` | `[SHIRASAGI-TANTEI-2] chore: 開発ルール（CLAUDE.md）とPRテンプレートを追加` |
+| `chore` | 構成の整理・設定ファイル・このファイルの更新 | `chore/SHIRASAGI-TANTEI-3` | `[SHIRASAGI-TANTEI-3] chore: 開発ルール（CLAUDE.md）とPRテンプレートを追加` |
 
 ### PRタイトルと本文の書き方
 
