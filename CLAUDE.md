@@ -5,8 +5,10 @@ TRPGキャラクター「白鷺 雅」の探偵事務所の架空ホームペー
 ## サイトの作り
 
 - 素のHTML・CSS・JavaScriptのみ。フレームワーク・ビルド工程・ルーティング設定は使わない。
-- 1ページ1フォルダ（`service/index.html` → `/service/`）。ページを `pages/` などにまとめない。
-- 共通ファイルは `css/style.css`・`js/main.js`・`img/`。
+- 公開するファイルはすべて `site/` に置く。`site/` が公開URLのルートになる（`main` に入ると `.github/workflows/pages.yml` が `site/` だけを GitHub Pages に公開する）。
+- `site/` の外（`docs/`・`.github/`・このファイルなど）は公開されない。ページでないファイルは `site/` に入れない。
+- 1ページ1フォルダ（`site/service/index.html` → `/service/`）。`site/` の中で、ページを `pages/` などにまとめない（公開URLの形が変わるため）。
+- 共通ファイルは `site/css/style.css`・`site/js/main.js`・`site/img/`。
 - リンクは相対パスで `index.html` まで書く（ローカルでファイルを直接開いて確認できるようにするため）。
 - ヘッダー・グローバルナビ・フッターは全ページに同じものが書かれている。どれかを変えたら全ページをそろえる。
 - 新しいページを足したら、ナビ・フッター・関連する一覧（事例一覧、お知らせなど）からのリンクも足す。
@@ -24,7 +26,7 @@ TRPGキャラクター「白鷺 雅」の探偵事務所の架空ホームペー
 
 ## 隠し要素
 
-- トップの灰皿 → 代表あいさつの煙草 → 事務所概要の表札、の順に押すと `office/index.html` の `#ura` が出る（`js/main.js` の `hsOrder`）。
+- トップの灰皿 → 代表あいさつの煙草 → 事務所概要の表札、の順に押すと `site/office/index.html` の `#ura` が出る（`site/js/main.js` の `hsOrder`）。
 - 隠しボタンの位置や順番を変えるときは、HTMLの `data-hs` と `hsOrder` を両方直す。
 
 ## ブランチ構成
