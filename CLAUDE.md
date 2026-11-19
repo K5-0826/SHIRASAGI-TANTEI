@@ -12,6 +12,16 @@ TRPGキャラクター「白鷺 雅」の探偵事務所の架空ホームペー
 - 新しいページを足したら、ナビ・フッター・関連する一覧（事例一覧、お知らせなど）からのリンクも足す。
 - フッターの架空サイトである旨の注記は消さない・弱めない。
 
+## キャラクター設定
+
+- 白鷺 雅の設定は `docs/miyabi.md` にまとめてある（いあきゃらのシートから取った控え）。来歴の詳細と事件記録の原文は `docs/miyabi-memo.md`。
+- ページの文章・画像・隠し要素を足したり直したりするときは、ここの設定と食い違わないようにする。食い違ったらシートが正なので、ユーザーに確かめる。
+- `docs/` はサイトのページではない。ナビやフッターからリンクしない。
+- develop へのPRのたびに、GitHub Actions（`.github/workflows/iachara.yml`）がシートを取り、`docs/miyabi-sheet.json` と比べる。変わっていればPRにコメントが付く。
+- コメントが付いたら、そのPRとは別に `content/SHIRASAGI-TANTEI-<番号>` のPRを出す。中身は、`docs/miyabi.md`・`docs/miyabi-memo.md` を直して、`IACHARA_FIREBASE_KEY=<キー> node .github/scripts/iachara.mjs update` で `docs/miyabi-sheet.json` を最新にすること。
+  - 新しいメモ・通過シナリオ・日記は、ネタバレを含まないか確かめてから載せる。迷ったらユーザーに聞く。
+  - キーはリポジトリの Secret `IACHARA_FIREBASE_KEY` に入っている。ファイルには書かない（Trivy の秘密情報スキャンで落ちる）。
+
 ## 隠し要素
 
 - トップの灰皿 → 代表あいさつの煙草 → 事務所概要の表札、の順に押すと `office/index.html` の `#ura` が出る（`js/main.js` の `hsOrder`）。
