@@ -4,7 +4,7 @@
 
 - 取得日：2026-11-19
 - 載せていないもの：日記2件（通過シナリオのネタバレ）、「組み付きについて」（ルールの解説でHPには関係しない）、「事件記録：息子失踪の件」（パスワード付きで取得できない）
-- HPの調査事例との対応：トラ→`cases/neko/`、足音→`cases/ashioto/`、素行調査→`cases/sokou/`、掛け軸→`cases/kakejiku/`、付きまとい→`cases/tsukimatoi/`。拾得物の返却はHPに載せていない。
+- HPの調査事例との対応：トラ→`site/cases/neko/`、足音→`site/cases/ashioto/`、素行調査→`site/cases/sokou/`、掛け軸→`site/cases/kakejiku/`、付きまとい→`site/cases/tsukimatoi/`。拾得物の返却はHPに載せていない。
 
 ## 来歴
 
