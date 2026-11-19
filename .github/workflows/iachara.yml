@@ -1,0 +1,49 @@
+name: いあきゃら確認
+
+# develop へのPRのたびに、白鷺雅のいあきゃらのシートが docs/ に反映した時点から変わっていないかを確かめ、
+# 変わっていればPRにコメントする。docs/ の書き換えはしない（別のPRで行う）。
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: シートの更新を確認
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: シートを取得して比べる
+        id: check
+        env:
+          IACHARA_FIREBASE_KEY: ${{ secrets.IACHARA_FIREBASE_KEY }}
+        run: node .github/scripts/iachara.mjs check > "$RUNNER_TEMP/comment.md"
+
+      # 変更があればコメントを出す。以前のコメントがあれば書き換える（最新と一致したら「一致」に直す）
+      - name: PRにコメント
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          CHANGED: ${{ steps.check.outputs.changed }}
+        run: |
+          id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+            --jq '[.[] | select(.body | startswith("<!-- iachara-check -->"))][0].id // empty')
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F body=@"$RUNNER_TEMP/comment.md" > /dev/null
+          elif [ "$CHANGED" = "true" ]; then
+            gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" -F body=@"$RUNNER_TEMP/comment.md" > /dev/null
+          fi
+          cat "$RUNNER_TEMP/comment.md" >> "$GITHUB_STEP_SUMMARY"
